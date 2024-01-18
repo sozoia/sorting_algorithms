@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <math.h>
 
 /**
  * insertion_sort_list - srting list in insertion sort algorthim
@@ -12,18 +13,35 @@ void insertion_sort_list(listint_t **list)
 	listint_t *temp = malloc(sizeof(listint_t));
 
 	key = key->next;
-	while(key != NULL && temp != NULL)
+	while(key != NULL)
 	{
 		temp = key;
-		while(befor->n > temp->n && befor != NULL)
+		while(befor != NULL && befor->n > key->n)
 		{
-			key = befor;
-			befor = befor->prev;
+			if (befor->prev == NULL) 
+			{
+				befor->next = key->next;
+				befor->prev = key;
+				key->prev = NULL;
+				if (temp->next != NULL)
+					temp->next->prev = befor;
+				key->next = befor;
+			}
+			if (key->next == NULL)
+			{
+				key->prev = befor->prev;
+				befor->next = NULL;
+				key->next = befor;
+				if (befor->prev != NULL)
+					befor->prev->next = key;
+				befor->prev = key;
+			}
 			print_list(*list);
 		}
-		key = temp;
 		key = key->next;
-		befor = befor->next;
+		free(temp);
+		if (befor != NULL) 
+			befor = befor->next;
 	}
 }
 
