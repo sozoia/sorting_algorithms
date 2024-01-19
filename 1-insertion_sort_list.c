@@ -18,21 +18,25 @@ void insertion_sort_list(listint_t **list)
 		while(key != NULL)
 		{
 			temp = key;
-			while (key->n < befor->n) 
+			while (befor != NULL && key->n < befor->n) 
 			{
-				key->prev = befor->prev;
-				befor->next = key->next;
 				if (befor->prev != NULL)
 					befor->prev->next = key;
 				if(temp->next != NULL)
 					temp->next->prev = befor;
-				befor->prev = key;
+				befor->next = key->next;
+				key->prev = befor->prev;
 				key->next = befor;
-				printf("ian stack");
+				befor->prev = key;
+				
+				befor = key->prev;
+				if (key->prev == NULL) 
+					*list = key;
 				print_list(*list);
 			}
 			key = temp->next;
-			befor = key->prev;
+			if(key != NULL)
+				befor = key->prev;
 		}
 	}
 }
