@@ -10,8 +10,8 @@ void selection_sort(int *array, size_t size)
     int i, j;
     int greater, main;
 
-	if (size < 1 || !array)
-		return;
+        if (size < 1 || !array)
+                return;
 
     for(i = 0; i < size; i++)
     {
@@ -27,6 +27,8 @@ void selection_sort(int *array, size_t size)
                 break;
             }
         }
+        if (array[i] != main)
+            i = -1;
     }
     return;
 }
