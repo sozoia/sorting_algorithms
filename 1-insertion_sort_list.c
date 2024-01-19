@@ -13,35 +13,27 @@ void insertion_sort_list(listint_t **list)
 	listint_t *temp = malloc(sizeof(listint_t));
 
 	key = key->next;
-	while(key != NULL)
+	if (list != NULL)
 	{
-		temp = key;
-		while(befor != NULL && befor->n > key->n)
+		while(key != NULL)
 		{
-			if (befor->prev == NULL) 
+			temp = key;
+			while (key->n < befor->n) 
 			{
-				key->next = befor;
-				key->prev = NULL;
-				if (temp->next != NULL)
-					temp->next->prev = befor;
-				befor->next = temp->next;
-			}
-			if (key->next == NULL)
-			{
-				key->next = befor;
 				key->prev = befor->prev;
-				befor->next = NULL;
-				key->next = befor;
+				befor->next = key->next;
 				if (befor->prev != NULL)
 					befor->prev->next = key;
+				if(temp->next != NULL)
+					temp->next->prev = befor;
 				befor->prev = key;
+				key->next = befor;
+				printf("ian stack");
+				print_list(*list);
 			}
-			print_list(*list);
+			key = temp->next;
+			befor = key->prev;
 		}
-		key = key->next;
-		free(temp);
-		if (befor != NULL) 
-			befor = befor->next;
 	}
 }
 
