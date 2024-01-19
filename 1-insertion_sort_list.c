@@ -15,27 +15,27 @@ void insertion_sort_list(listint_t **list)
 	key = key->next;
 	if (list != NULL)
 	{
-		while(key != NULL)
+		while (key != NULL)
 		{
 			temp = key;
-			while (befor != NULL && key->n < befor->n) 
+			while (befor != NULL && key->n < befor->n)
 			{
 				if (befor->prev != NULL)
 					befor->prev->next = key;
-				if(temp->next != NULL)
+				if (temp->next != NULL)
 					temp->next->prev = befor;
 				befor->next = key->next;
 				key->prev = befor->prev;
 				key->next = befor;
 				befor->prev = key;
-				
+
 				befor = key->prev;
-				if (key->prev == NULL) 
+				if (key->prev == NULL)
 					*list = key;
 				print_list(*list);
 			}
 			key = temp->next;
-			if(key != NULL)
+			if (key != NULL)
 				befor = key->prev;
 		}
 	}
