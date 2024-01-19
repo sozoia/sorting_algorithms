@@ -30,5 +30,4 @@ void selection_sort(int *array, size_t size)
         if (array[i] != main)
             i = -1;
     }
-    return;
 }
