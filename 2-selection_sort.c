@@ -7,7 +7,7 @@
 */
 void selection_sort(int *array, size_t size)
 {
-    int i, j;
+    size_t i, j;
     int greater, main;
 
         if (size < 1 || !array)
@@ -28,6 +28,9 @@ void selection_sort(int *array, size_t size)
             }
         }
         if (array[i] != main)
+        {
+            print_array(array, size);
             i = -1;
+        }
     }
 }
