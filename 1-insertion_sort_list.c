@@ -1,5 +1,26 @@
 #include "sort.h"
-#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+/**
+ * swap_node - swap tow node in duobly linked list
+ * @key: the first node
+ * @previus: the second node
+ * Return: nothing
+ */
+
+void swap_node(listint_t *key, listint_t *befor)
+{
+	if (befor->prev != NULL)
+		befor->prev->next = key;
+	if (key->next != NULL)
+		key->next->prev = befor;
+
+	befor->next = key->next;
+	key->prev = befor->prev;
+	key->next = befor;
+	befor->prev = key;
+}
 
 /**
  * insertion_sort_list - srting list in insertion sort algorthim
@@ -10,7 +31,6 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *key = *list;
 	listint_t *befor = *list;
-	listint_t *temp = malloc(sizeof(listint_t));
 
 	if (list == NULL || *list == NULL || key->next == NULL)
 		return;
@@ -18,26 +38,17 @@ void insertion_sort_list(listint_t **list)
 	key = key->next;
 	while (key != NULL)
 	{
-		temp = key;
-		while (key->n < befor->n)
+		while (key->n < befor->n && befor != NULL)
 		{
-			if (befor->prev != NULL)
-				befor->prev->next = key;
-			if (temp->next != NULL)
-				temp->next->prev = befor;
-			befor->next = key->next;
-			key->prev = befor->prev;
-			key->next = befor;
-			befor->prev = key;
+			swap_node(key, befor);
 
-			befor = key->prev;
+			befor = befor->prev;
 			if (key->prev == NULL)
 				*list = key;
 			print_list(*list);
 		}
-		key = temp->next;
-		if (key != NULL)
-			befor = key->prev;
+		key = key->next;
+
 	}
 
 }
