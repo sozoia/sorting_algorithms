@@ -30,25 +30,24 @@ void swap_node(listint_t *key, listint_t *befor)
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *key = *list;
-	listint_t *befor = *list;
+	listint_t *befor;
 
 	if (list == NULL || *list == NULL || key->next == NULL)
 		return;
 
 	key = key->next;
+	befor = key->prev;
 	while (key != NULL)
 	{
-		while (key->n < befor->n && befor != NULL)
+		while (befor != NULL && key->n < befor->n)
 		{
 			swap_node(key, befor);
 
-			befor = befor->prev;
 			if (key->prev == NULL)
 				*list = key;
 			print_list(*list);
 		}
 		key = key->next;
-
 	}
 
 }
