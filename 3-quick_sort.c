@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * swap_element - swap tow elemnt
@@ -14,25 +15,33 @@ void swap_element(int *a, int *b)
 	*a = *b;
 	*b = temp;
 }
+/**
+ * Lomuto_partition - to choose the Lomuto partition and swap the elemnt
+ * @arr: the array want to sort
+ * @highe: the last element position
+ * @low: the first element position
+ * @size: the size of array
+ * Return: the index of partion
+ */
 
 int Lomuto_partition(int arr[], int highe, int low, size_t size)
 {
 	int pavit = arr[highe];
-	int i = low - 1;
-	int j = low;
+	int i = low;
+	int j;
 
-	while(j <= highe - 1)
+	for(j = low; j < highe; j++)
 	{
+		printf("pivot: %d vs elemnt: %d\n", arr[highe], arr[j]);
 		if (arr[j] <= pavit)
 		{
-			i++;
 			swap_element(&arr[i], &arr[j]);
+			i++;
 			print_array(arr, size);
 		}
-		j++;
 	}
-	swap_element(&arr[i + 1], &arr[highe]);
-	return (i + 1);
+	swap_element(&arr[i], &arr[highe]);
+	return (i);
 }
 /**
  * quick_sort_recursive - recursion for quick sort function
