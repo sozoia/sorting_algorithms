@@ -21,9 +21,9 @@ typedef struct listint_s
 
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
-int Lomuto_partition(int arr[], int highe, int low);
+int Lomuto_partition(int arr[], int highe, int low, size_t size);
 void swap_element(int *a, int *b);
-void quick_sort_recursive(int arr[], int low, int high);
+void quick_sort_recursive(int arr[], int low, int high, size_t size);
 void quick_sort(int *array, size_t size);
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
