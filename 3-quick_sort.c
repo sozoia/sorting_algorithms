@@ -27,7 +27,7 @@ int Lomuto_partition(int arr[], int highe, int low)
 		{
 			i++;
 			swap_element(&arr[i], &arr[j]);
-			print_array(arr, highe);
+			print_array(arr, low);
 		}
 		j++;
 	}

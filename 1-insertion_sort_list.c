@@ -36,13 +36,13 @@ void insertion_sort_list(listint_t **list)
 		return;
 
 	key = key->next;
-	befor = key->prev;
 	while (key != NULL)
 	{
+		befor = key->prev;
 		while (befor != NULL && key->n < befor->n)
 		{
 			swap_node(key, befor);
-
+			befor = key->prev;
 			if (key->prev == NULL)
 				*list = key;
 			print_list(*list);
