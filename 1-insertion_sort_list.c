@@ -5,7 +5,7 @@
 /**
  * swap_node - swap tow node in duobly linked list
  * @key: the first node
- * @previus: the second node
+ * @befor: the second node
  * Return: nothing
  */
 
