@@ -11,6 +11,7 @@
 void swap_element(int *a, int *b)
 {
 	int temp;
+
 	temp = *a;
 	*a = *b;
 	*b = temp;
@@ -30,7 +31,7 @@ int Lomuto_partition(int arr[], int highe, int low, size_t size)
 	int i = low;
 	int j;
 
-	for(j = low; j < highe; j++)
+	for (j = low; j < highe; j++)
 	{
 		if (arr[j] <= pavit)
 		{
@@ -48,13 +49,15 @@ int Lomuto_partition(int arr[], int highe, int low, size_t size)
 /**
  * quick_sort_recursive - recursion for quick sort function
  * @arr: the array want to sort
- * @low: partion index + 1 to sort the right side 
- * @hight: partition index - 1 to sort left side
+ * @low: partion index + 1 to sort the right side
+ * @high: partition index - 1 to sort left side
+ * @size: the size of array
  */
-void quick_sort_recursive(int arr[], int low, int high, size_t size) 
+void quick_sort_recursive(int arr[], int low, int high, size_t size)
 {
 	int Index;
-	if (low < high) 
+
+	if (low < high)
 	{
 		Index = Lomuto_partition(arr, high, low, size);
 		quick_sort_recursive(arr, low, Index - 1, size);
