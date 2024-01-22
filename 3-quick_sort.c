@@ -32,15 +32,17 @@ int Lomuto_partition(int arr[], int highe, int low, size_t size)
 
 	for(j = low; j < highe; j++)
 	{
-		printf("pivot: %d vs elemnt: %d\n", arr[highe], arr[j]);
 		if (arr[j] <= pavit)
 		{
 			swap_element(&arr[i], &arr[j]);
+			if (i != j)
+				print_array(arr, size);
 			i++;
-			print_array(arr, size);
 		}
 	}
 	swap_element(&arr[i], &arr[highe]);
+	if (i != highe)
+		print_array(arr, size);
 	return (i);
 }
 /**
