@@ -76,9 +76,8 @@ void quick_sort(int *array, size_t size)
 {
 	int low = 0;
 	int highe = size - 1;
-	if (size < 2)
-		return;
-	if (array == NULL || size == 0)
+
+	if (array == NULL || size < 2)
 		return;
 
 	quick_sort_recursive(array, low, highe, size);
