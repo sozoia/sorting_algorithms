@@ -30,5 +30,6 @@ void insertion_sort_list(listint_t **list);
 void swap_node(listint_t *key, listint_t *befor);
 void selection_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
 
 #endif
